@@ -16,38 +16,59 @@
 <body>
 
     <header>
-        <img src="assets/logo.svg" alt="">
+        <img src="assets/logo-with-name.svg" alt="">
     </header>
 
     <main>
         <h1 class="main-slogan">Choose the coin you want to pay with</h1>
+        <div class="crypto-coins-container">
+            <div class="coin-cointainer" onclick="openTransactionForm()">
+                <img src="assets/crypto-coins/eth.svg" alt="btc">
+                <div class="coin-text">ETH</div>
+                
+            </div>
+            <div class="coin-cointainer" onclick="openTransactionForm()">
+                <img src="assets/crypto-coins/btc.svg" alt="btc">
+                <div class="coin-text">BTC</div>
+            </div>
+            <div class="coin-cointainer" onclick="openTransactionForm()">
+                <img src="assets/crypto-coins/usdt.svg" alt="btc">
+                <div class="coin-text">USDT</div>
+            </div>
+        </div>
+    
+        <div class="need-help-join-btn-container">
+            <button class="need-help-join-btn">
+                NEED HELP JOINING?
+            </button>
+        </div>
+
+        <div class="form-container hidden">
+            <div class="header">
+                Lorem ipsum
+            </div>
+            <div class="main">
+                <input type="text" placeholder="Link transakcije">
+                <input type="text" placeholder="Telegram username">
+    
+                <div class="submit-btn">SUBMIT</div>
+            </div>
+        </div>
     </main>
 
-    <div class="crypto-coins-container">
-        <div class="coin-cointainer">
-            <img src="assets/crypto-coins/eth.svg" alt="btc">
-            <div class="coin-text">ETH</div>
-            
-        </div>
-        <div class="coin-cointainer">
-            <img src="assets/crypto-coins/btc.svg" alt="btc">
-            <div class="coin-text">BTC</div>
-        </div>
-        <div class="coin-cointainer">
-            <img src="assets/crypto-coins/usdt.svg" alt="btc">
-            <div class="coin-text">USDT</div>
-        </div>
-    </div>
 
-    <div class="need-help-join-btn-container">
-        <button class="need-help-join-btn">
-            NEED HELP JOINING?
-        </button>
-    </div>
 
     <footer>
         <img src="assets/logo10-negative.svg" alt="">
     </footer>
+
+    <script>
+        function openTransactionForm(){
+            const formContainer = document.querySelector('.form-container');
+            formContainer.classList.remove('hidden');
+            formContainer.scrollIntoView(true);
+        }
+    </script>
 </body>
 
 </html>
