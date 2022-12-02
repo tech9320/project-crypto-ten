@@ -1,0 +1,28 @@
+footer{
+    background-color: var(--main-blue);
+    height: 2rem;
+    position: relative;
+}
+
+footer img{
+    position: absolute;
+    display: block;
+    height: 4rem;
+    left:50%;
+    bottom:0;
+    transform: translateX(-50%);
+}
+
+footer small.copyright{
+    color: white;
+    font-size: 1rem;
+    text-align: center;
+    width: 100%;
+    display: block;
+    padding:3rem 0 1rem;
+    background-color: var(--main-blue);
+}
+
+footer small.copyright a{
+    color: white;
+}

@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="join-now.style.css">
+    <link rel="stylesheet" href="common.style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
@@ -60,6 +61,7 @@
 
     <footer>
         <img src="assets/logo10-negative.svg" alt="">
+        <small class="copyright">&copy; Copyright <span class="copy-year"></span>, <a href="https://9320.tech">Tech9320 team</a>. All rights reserved.</small>
     </footer>
 
     <script>
@@ -68,6 +70,8 @@
             formContainer.classList.remove('hidden');
             formContainer.scrollIntoView(true);
         }
+
+        document.querySelector('.copy-year').innerText = new Date().getFullYear();
     </script>
 </body>
 
