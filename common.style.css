@@ -1,8 +1,13 @@
+*{
+    font-family: 'Poppins', sans-serif;
+}
+
 footer{
     background-color: var(--main-blue);
     height: 2rem;
     position: relative;
 }
+
 
 footer img{
     position: absolute;
