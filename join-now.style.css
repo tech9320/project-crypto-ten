@@ -69,6 +69,18 @@
     left: 105%;
 }
 
+@media only screen and (max-width: 600px){
+    .copy-tooltip .copy-tooltiptext {
+        display: none;
+    }
+
+    .wallet-address-div p{
+        max-width: 70%;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+}
+
 .copy-tooltip .copy-tooltiptext::after {
     content: "";
     position: absolute;
@@ -92,6 +104,13 @@
     margin: auto;
     width: 25vh;
 }
+@media only screen and (max-width: 600px){
+    .qr-code img{
+        width: 70%;
+    }
+}
+
+
 
 html {
     scroll-behavior: smooth;
@@ -138,7 +157,7 @@ main{
         margin: auto;
         font-size: 2.2rem;
         font-weight: 700;
-        padding-top: 10vh;
+        padding-top: 4vh;
         text-align: center;
     }
 }
@@ -150,11 +169,11 @@ main{
 
 .need-help-join-btn {
     color: white;
-    font-size: 2rem;
+    font-size: 1.8rem;
     padding: 1rem 2rem;
     font-weight: 700;
     border-radius: 9999px;
-    margin: 4rem;
+    margin: 2rem 0 4rem;
     background-color: var(--main-blue);
     outline: none;
     border: none;
@@ -200,7 +219,7 @@ main{
 }
 
 .coin-cointainer{
-    margin: 3rem 4rem;
+    margin: 2rem 4rem;
     margin-bottom: 0;
     display: flex;
     justify-content: center;
@@ -210,16 +229,27 @@ main{
     transition: all .2s;
 }
 
+.coin-cointainer img{
+    width: 10vw;
+    margin: auto;
+}
+@media only screen and (max-width: 600px){
+    .coin-cointainer img{
+        width: 60vw;
+        margin: auto;
+    }
+}
+
 .coin-cointainer:hover{
     transform: scale(1.1);
 }
 
-
 .coin-text{
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .form-container{

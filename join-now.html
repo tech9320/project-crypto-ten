@@ -36,17 +36,16 @@
         <h1 class="main-slogan">Choose the coin you want to pay with</h1>
         <div class="crypto-coins-container">
             <div class="coin-cointainer" onclick="openTransactionForm()">
-                <img src="assets/crypto-coins/eth.svg" alt="btc">
-                <div class="coin-text">ETH</div>
-
+                <img src="assets/crypto-coins/eth.svg" alt="eth">
+                <p class="coin-text eth"></p>
             </div>
             <div class="coin-cointainer" onclick="openTransactionForm()">
                 <img src="assets/crypto-coins/btc.svg" alt="btc">
-                <div class="coin-text">BTC</div>
+                <p class="coin-text btc"></p>
             </div>
             <div class="coin-cointainer" onclick="openTransactionForm()">
-                <img src="assets/crypto-coins/usdt.svg" alt="btc">
-                <div class="coin-text">USDT</div>
+                <img src="assets/crypto-coins/usdt.svg" alt="usdt">
+                <p class="coin-text usdt"></p>
             </div>
         </div>
 
@@ -94,12 +93,10 @@
                 text: `${value}`,
                 width: 180, //default 128
                 height: 180,
-                colorDark: "#000000",
+                colorDark: "#002435",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });
-
-            console.log(qrcode)
         } 
 
         generateQR(walletAddress);
@@ -112,6 +109,23 @@
             setTimeout(()=>{
                 toolTipText.innerHTML = 'Copy'
             },2000)
+        })
+
+        const coinTextETH = document.querySelector('.coin-text.eth')
+        const coinTextBTC = document.querySelector('.coin-text.btc')
+        const coinTextUSDT = document.querySelector('.coin-text.usdt')
+
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd')
+        .then(response => response.json())
+        .then(response => {
+            coinTextETH.innerHTML = `10$ = ${(10/response.bitcoin.usd).toFixed(8)} ETH`;
+            coinTextBTC.innerHTML = `10$ = ${(10/response.ethereum.usd).toFixed(8)} BTC`;
+            coinTextUSDT.innerHTML = `10$ = ${(10/response.tether.usd).toFixed(8)} USDT`;
+        })
+        .catch(error => {
+            coinTextETH.innerHTML = 'ETH';
+            coinTextBTC.innerHTML = 'BTC'
+            coinTextUSDT.innerHTML = 'USDT'
         })
     </script>
 </body>
