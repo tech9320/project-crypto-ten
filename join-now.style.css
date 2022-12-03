@@ -10,6 +10,89 @@
     padding: 0;
 }
 
+.wallet-address-div{
+    color: white;
+    text-align: center;
+    margin: 2rem 0rem 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.wallet-address-div p{
+    font-size: 1rem;
+    border-bottom: 1px solid white;
+    width: max-content;
+    margin: auto;
+    background-color: #1c2124;
+    padding: 0.2rem;
+    cursor: pointer;
+    transition: all .1s;
+}
+
+
+.wallet-address-div p:hover{
+    color: var(--main-blue);
+}
+
+.wallet-address-div p:hover .copy-icon{
+    filter: invert(70%) sepia(59%) saturate(6957%) hue-rotate(168deg) brightness(100%) contrast(105%);
+
+}
+
+.copy-icon{
+    filter: invert(100%) sepia(23%) saturate(1%) hue-rotate(1deg) brightness(104%) contrast(101%);
+    height: 1.2rem;
+    cursor: pointer;
+    transition: all .1s;
+    transform: translateY(2.5px);
+}
+
+.copy-icon:hover{
+    transform: scale(1.2);
+}
+
+.copy-tooltip{
+    position: relative;
+}
+
+.copy-tooltip .copy-tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: rgba(255, 255, 255, 0.75);
+    color: rgb(42, 42, 42);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%;
+}
+
+.copy-tooltip .copy-tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent rgba(255, 255, 255, 0.75) transparent transparent;
+}
+
+.copy-tooltip:hover .copy-tooltiptext{
+    visibility: visible;
+}
+
+.qr-code{
+    margin: auto;
+}
+
+.qr-code img{
+    margin: auto;
+    width: 25vh;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -38,15 +121,13 @@ main{
     min-height: 140vh;
 }
 
-
-
 .main-slogan {
     width: 60%;
     color: white;
     margin: auto;
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 700;
-    padding-top: 12vh;
+    padding-top: 2vh;
     text-align: center;
 }
 
@@ -175,7 +256,7 @@ main{
     background-color: var(--main-blue);
     color: white;
     font-size: 1.5rem;
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 1rem;
     border-radius: 1rem;
     margin: 0 auto 3rem;
 }

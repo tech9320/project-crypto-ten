@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="join-now.style.css">
     <link rel="stylesheet" href="common.style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
     </style>
@@ -24,6 +25,14 @@
     </header>
 
     <main>
+        <div class="wallet-address-div">
+            Wallet address
+            <p class="copy-tooltip">0x95222290dd7278aa3ddd389cc1e1d165cc4bafe5 <img class="copy-icon" src="assets/copy-icon.svg" alt=""><span class="copy-tooltiptext">Copy</span></p>
+            
+        </div>
+        <div class="qr-code">
+        </div>
+
         <h1 class="main-slogan">Choose the coin you want to pay with</h1>
         <div class="crypto-coins-container">
             <div class="coin-cointainer" onclick="openTransactionForm()">
@@ -61,7 +70,7 @@
     </main>
 
 
-    
+
 
 
     <footer>
@@ -71,6 +80,7 @@
     </footer>
 
     <script>
+        let walletAddress = '0x95222290dd7278aa3ddd389cc1e1d165cc4bafe5'; 
         function openTransactionForm() {
             const formContainer = document.querySelector('.form-container');
             formContainer.classList.remove('hidden');
@@ -78,6 +88,31 @@
         }
 
         document.querySelector('.copy-year').innerText = new Date().getFullYear();
+
+        function generateQR(value) {
+            let qrcode = new QRCode(document.querySelector(".qr-code"), {
+                text: `${value}`,
+                width: 180, //default 128
+                height: 180,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            console.log(qrcode)
+        } 
+
+        generateQR(walletAddress);
+
+        const walletAddressBtn = document.querySelector('.wallet-address-div p')
+        walletAddressBtn.addEventListener('click', () => {
+            navigator.clipboard.writeText(walletAddress);
+            const toolTipText = document.querySelector('.copy-tooltiptext');
+            toolTipText.innerHTML = 'Copied!'
+            setTimeout(()=>{
+                toolTipText.innerHTML = 'Copy'
+            },2000)
+        })
     </script>
 </body>
 

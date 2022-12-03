@@ -8,6 +8,9 @@ footer{
     position: relative;
 }
 
+body{
+    overflow-x: hidden;
+}
 
 footer img{
     position: absolute;
