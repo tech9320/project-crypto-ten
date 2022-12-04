@@ -55,17 +55,17 @@
             </button>
         </div>
 
-        <div class="form-container hidden">
+        <form class="form-container hidden">
             <div class="header">
                 Lorem ipsum
             </div>
             <div class="main">
-                <input type="text" placeholder="Link transakcije">
-                <input type="text" placeholder="Telegram username">
+                <input type="text" id="transactionLink" placeholder="Link transakcije">
+                <input type="text" id="telegramUsername" placeholder="Telegram username">
 
-                <div class="submit-btn">SUBMIT</div>
+                <button type="submit" onclick="submitTransaction(event)" class="submit-btn">SUBMIT</div>
             </div>
-        </div>
+        </form>
     </main>
 
 
@@ -127,6 +127,41 @@
             coinTextBTC.innerHTML = 'BTC'
             coinTextUSDT.innerHTML = 'USDT'
         })
+
+        function submitTransaction(event){
+            event.preventDefault();
+
+            const transactionLinkInput = document.querySelector('input#transactionLink')
+            if(!transactionLinkInput){
+                alert('Error');
+                console.log('Transaction link missing');
+                return;
+            }
+
+            const telegramUsernameInput = document.querySelector('input#telegramUsername')
+            if(!telegramUsernameInput){
+                alert('Error');
+                console.log('Telegram username missing');
+                return;
+            }
+
+            if(!transactionLinkInput.value || !telegramUsernameInput.value){
+                alert("Please fill in all fields");
+                return;
+            }
+
+            let formData = new FormData();
+
+            formData.append('transactionLink', transactionLinkInput.value);
+            formData.append('telegramUsername', telegramUsernameInput.value);
+
+            fetch('https://fabform.io/f/uOedpx2', {
+                method: 'POST',
+                body: formData
+            }).then(response => response.json())
+            .then(console.log)
+            .catch(console.log)
+        }
     </script>
 </body>
 
