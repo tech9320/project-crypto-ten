@@ -98,6 +98,8 @@
 
 .qr-code{
     margin: auto;
+    display: flex;
+    justify-content: center;
 }
 
 .qr-code img{
@@ -251,7 +253,11 @@ main{
     font-weight: 600;
     white-space: nowrap;
 }
-
+@media only screen and (max-width: 1024px){
+    .coin-text{
+        font-size: 1rem;
+    }
+}
 .form-container{
     margin: 3rem auto 5rem;
     width: 70vw;
