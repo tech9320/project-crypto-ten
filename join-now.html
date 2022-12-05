@@ -25,25 +25,17 @@
     </header>
 
     <main>
-        <div class="wallet-address-div">
-            Wallet address
-            <p class="copy-tooltip">0x95222290dd7278aa3ddd389cc1e1d165cc4bafe5 <img class="copy-icon" src="assets/copy-icon.svg" alt=""><span class="copy-tooltiptext">Copy</span></p>
-            
-        </div>
-        <div class="qr-code">
-        </div>
-
         <h1 class="main-slogan">Choose the coin you want to pay with</h1>
         <div class="crypto-coins-container">
-            <div class="coin-cointainer" onclick="openTransactionForm()">
+            <div class="coin-cointainer" onclick="openTransactionForm('ETH')">
                 <img src="assets/crypto-coins/eth.svg" alt="eth">
                 <p class="coin-text eth"></p>
             </div>
-            <div class="coin-cointainer" onclick="openTransactionForm()">
+            <div class="coin-cointainer" onclick="openTransactionForm('BTC')">
                 <img src="assets/crypto-coins/btc.svg" alt="btc">
                 <p class="coin-text btc"></p>
             </div>
-            <div class="coin-cointainer" onclick="openTransactionForm()">
+            <div class="coin-cointainer" onclick="openTransactionForm('USDT')">
                 <img src="assets/crypto-coins/usdt.svg" alt="usdt">
                 <p class="coin-text usdt"></p>
             </div>
@@ -55,17 +47,30 @@
             </button>
         </div>
 
-        <form class="form-container hidden" action="https://fabform.io/f/uOedpx2" method="post">
-            <div class="header">
-                Just fill this and you're good to go!
+        <div class="form-container hidden">
+            <div class="wallet-address-div">
+                Wallet address
+                <p class="copy-tooltip"><span class="wallet-address-text"></span> <img class="copy-icon" src="assets/copy-icon.svg" alt=""><span class="copy-tooltiptext">Copy</span></p>
+                
             </div>
-            <div class="main">
-                <input type="text" name="transactionLink" id="transactionLink" placeholder="Transaction Link">
-                <input type="text"  name="telegramUsername"  id="telegramUsername" placeholder="Telegram Username">
 
-                <button type="submit" class="submit-btn">SUBMIT</div>
+            <div class="qr-code-container">
+                <div class="qr-code">
+                </div>
             </div>
-        </form>
+
+            <form action="https://fabform.io/f/uOedpx2" method="post">
+                <div class="header">
+                    Just fill this and you're good to go!
+                </div>
+                <div class="main">
+                    <input type="text" name="transactionLink" id="transactionLink" placeholder="Transaction link">
+                    <input type="text"  name="telegramUsername"  id="telegramUsername" placeholder="Telegram username">
+    
+                    <button type="submit" class="submit-btn">SUBMIT</div>
+                </div>
+            </form>
+        </div>
     </main>
 
 
@@ -79,27 +84,50 @@
     </footer>
 
     <script>
-        let walletAddress = '0x95222290dd7278aa3ddd389cc1e1d165cc4bafe5'; 
-        function openTransactionForm() {
+        let walletAddressETH = '0x3232abc0dd7fe7835a3ddd389c165cc4ba435'; 
+        let walletAddressBTC = '0x95222290dd7278aa3ddd389c165cc4bafe5'; 
+        let walletAddressUSDT = '0x95111111223233dddabcc1004b22f'; 
+
+        let QR_Code;
+
+        function openTransactionForm(coin) {
             const formContainer = document.querySelector('.form-container');
             formContainer.classList.remove('hidden');
-            formContainer.scrollIntoView(true);
+
+            setTimeout(()=>{
+                formContainer.scrollIntoView(true);
+            }, 1);
+
+            let walletAddress;
+            if(coin == 'ETH'){
+                walletAddress = walletAddressETH
+            }else if(coin == 'BTC'){
+                walletAddress = walletAddressBTC
+            }else if(coin == 'USDT'){
+                walletAddress = walletAddressUSDT
+            }
+
+            if(QR_Code){
+                QR_Code.makeCode(walletAddress);
+            }else{
+                generateQR(walletAddress)
+            }
+
+            document.querySelector('.wallet-address-text').innerHTML = walletAddress
         }
 
         document.querySelector('.copy-year').innerText = new Date().getFullYear();
 
         function generateQR(value) {
-            let qrcode = new QRCode(document.querySelector(".qr-code"), {
+            QR_Code = new QRCode(document.querySelector(".qr-code"), {
                 text: `${value}`,
-                width: 180, //default 128
-                height: 180,
-                colorDark: "#002435",
+                width: 128,
+                height: 128,
+                colorDark: "#000000",
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });
         } 
-
-        generateQR(walletAddress);
 
         const walletAddressBtn = document.querySelector('.wallet-address-div p')
         walletAddressBtn.addEventListener('click', () => {

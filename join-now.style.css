@@ -13,9 +13,13 @@
 .wallet-address-div{
     color: white;
     text-align: center;
-    margin: 2rem 0rem 1rem;
+    margin: 0rem 0rem 1rem;
     font-size: 2rem;
     font-weight: 600;
+}
+
+.wallet-address-div.hidden{
+    display: none;
 }
 
 .wallet-address-div p{
@@ -96,6 +100,16 @@
     visibility: visible;
 }
 
+.qr-code-container{
+    padding: 1rem;
+    margin: auto;
+    display: inline-block;
+    width: 31vh;
+    height: 1/1;
+    background-color: white;
+    margin-bottom: 1.5rem;
+}
+
 .qr-code{
     margin: auto;
     display: flex;
@@ -104,7 +118,7 @@
 
 .qr-code img{
     margin: auto;
-    width: 25vh;
+    width: 30vh;
 }
 @media only screen and (max-width: 600px){
     .qr-code img{
@@ -145,7 +159,7 @@ main{
 .main-slogan {
     width: 60%;
     color: white;
-    margin: auto;
+    margin: 3rem auto 4rem;
     font-size: 3rem;
     font-weight: 700;
     padding-top: 2vh;
@@ -156,7 +170,6 @@ main{
     .main-slogan {
         width: 90%;
         color: white;
-        margin: auto;
         font-size: 2.2rem;
         font-weight: 700;
         padding-top: 4vh;
@@ -210,6 +223,8 @@ main{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    width: 75vw;
+    margin: auto;
 }
 @media only screen and (max-width: 600px){
     .crypto-coins-container{
@@ -220,25 +235,42 @@ main{
     }
 }
 
+.crypto-coins-container > *{
+    width: 33%;
+}
+@media only screen and (max-width: 600px){
+    .crypto-coins-container > *{
+        width: 100%;
+    }
+}
+
+
+
 .coin-cointainer{
-    margin: 2rem 4rem;
-    margin-bottom: 0;
+    margin-bottom: 3rem;
     display: flex;
     justify-content: center;
-    flex-direction: center;
     flex-direction: column;
     cursor: pointer;
     transition: all .2s;
 }
+@media only screen and (max-width: 600px){
+    .coin-cointainer{
+        margin-bottom: 2rem;
+    }
+}
+
 
 .coin-cointainer img{
-    width: 10vw;
+    width: 15vw;
     margin: auto;
+    margin-bottom: 1rem;
 }
 @media only screen and (max-width: 600px){
     .coin-cointainer img{
         width: 60vw;
         margin: auto;
+        margin-bottom: 1rem;
     }
 }
 
@@ -261,7 +293,8 @@ main{
 .form-container{
     margin: 3rem auto 5rem;
     width: 70vw;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .form-container.hidden{
