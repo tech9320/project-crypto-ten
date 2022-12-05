@@ -2,6 +2,17 @@
     font-family: 'Poppins', sans-serif;
 }
 
+@font-face {
+	font-family: 'Bypass';
+	src: url('assets/Bypass.ttf'); 
+	/* src: 
+		local('Lovely Font'),
+		local('Lovely-Font'),
+		url('fonts/lovely_font.otf') 
+		format('opentype'); */
+}
+
+
 footer{
     background-color: var(--main-blue);
     height: 2rem;

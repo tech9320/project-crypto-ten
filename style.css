@@ -37,22 +37,31 @@ header img {
     color: white;
     margin: auto;
     font-size: 5rem;
-    font-weight: 700;
+    font-weight: 200;
     padding-top: 15vh;
     text-align: center;
+    font-family: Bypass;
+    letter-spacing: .3rem;
+    word-spacing: .6rem;
 }
-
 @media only screen and (max-width: 600px){
     .main-slogan {
         width: 90%;
         color: white;
         margin: auto;
         font-size: 2.5rem;
-        font-weight: 700;
+        font-weight: 200;
         padding-top: 10vh;
         text-align: center;
     }
 }
+
+.main-slogan span{
+    color: var(--main-blue);
+    font-family: Bypass;
+}
+
+
 
 .join-now-btn-container {
     display: flex;
@@ -63,7 +72,8 @@ header img {
     color: white;
     font-size: 3rem;
     padding: 1rem 2rem;
-    font-weight: 700;
+    font-weight: 200;
+    font-family: Bypass;
     border-radius: 9999px;
     margin: 4rem;
     background-color: var(--main-blue);
@@ -79,7 +89,6 @@ header img {
         color: white;
         font-size: 2rem;
         padding: 1rem 2rem;
-        font-weight: 700;
         border-radius: 9999px;
         margin: 4rem;
         background-color: var(--main-blue);
@@ -88,6 +97,7 @@ header img {
         cursor: pointer;
         text-align: center;
         transition: all .2s;
+        font-weight: 100;
     }
 }
 
