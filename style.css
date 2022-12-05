@@ -252,11 +252,11 @@ header img {
 
 .reviews-container>div {
     width: 28%;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
 }
 @media only screen and (max-width: 600px){
     .reviews-container>div {
-        width: 45%;
+        width: 100%;
     }
 }
 
@@ -309,6 +309,14 @@ header img {
     .faq-div .container>div {
         width: 100%;
         margin-bottom: 3rem;
+    }
+
+    .faq-div .container>div>h4 {
+        text-align: center;
+    }
+    
+    .faq-div .container>div>p {
+        text-align: center;
     }
 }
 
