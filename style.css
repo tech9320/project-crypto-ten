@@ -142,6 +142,10 @@ header img {
     padding-left: 4rem;
 }
 
+.offer-div{
+    width: 90%;
+    margin: auto;
+}
 
 .offer-div h2 {
     color: white;
