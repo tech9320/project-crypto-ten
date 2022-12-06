@@ -356,7 +356,7 @@ header img {
         padding: 1.2rem 1.7rem;
         font-weight: 700;
         border-radius: 9999px;
-        margin: 4rem;
+        margin: 2rem;
         background-color: var(--main-blue);
         outline: none;
         border: none;
@@ -385,4 +385,80 @@ footer img{
     left:50%;
     bottom:0;
     transform: translateX(-50%);
+}
+
+.plan-div{
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.plan-div h2{
+        color: white;
+        font-size: 4rem;
+        text-align: center;
+        margin: 3rem;
+        margin-bottom: 2rem;
+    
+}
+@media only screen and (max-width: 600px){
+    .plan-div h2{
+        font-size: 3rem;
+        margin: 1rem;
+    }
+}
+
+.plan-div ul{
+    margin: auto;
+    color: white;
+    border: 5px solid var(--main-blue);
+    border-radius: 10px;
+    padding: 2rem;
+    list-style-type: none;
+}
+
+.plan-div ul li{
+    margin: auto;
+    font-size: 1.5rem;
+    text-align: center;
+    display: flex;
+}@media only screen and (max-width: 600px) {
+
+    .plan-div ul li {
+        font-size: 1rem;
+    }
+}
+
+.plan-div ul li img{
+    margin-right: 1rem;
+}
+
+.plan-div ul li span{
+    color: var(--main-blue);
+    text-shadow: 4px 3px 6px #1DA8FF;
+}
+
+.plan-div ul li img{
+    width: 1.1rem;
+}
+
+.plan-div .price{
+    text-align: center;
+    font-size: 1.7rem;
+    width: 50%;
+    margin: 2rem auto 0;
+    border-top: 1px solid white;
+    padding-top: 1rem;
+}@media only screen and (max-width: 600px) {
+    .plan-div .price{
+        width: 75%;
+    }
+}
+
+.plan-div .price span{
+    font-weight: 500;
+    color: var(--main-blue);
+    text-shadow: 4px 3px 6px #1DA8FF;
+    font-size: 2.1em;
 }
