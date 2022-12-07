@@ -21,7 +21,8 @@
 <body>
 
     <header>
-        <img src="assets/logo-with-name.svg" alt="">
+        <a href="./index.html"> <img src="assets/logo-with-name.svg" alt=""></a>
+       
     </header>
 
     <main>
@@ -40,18 +41,37 @@
                 <p class="coin-text usdt"></p>
             </div>
         </div>
-
         <div class="need-help-join-btn-container">
-            <button class="need-help-join-btn">
+            <button class="need-help-join-btn" onclick="helpModal(true)">
                 NEED HELP JOINING?
             </button>
         </div>
 
+        <div id="help-dialog" class="hidden">
+            <img class="close-btn" src="assets/close.svg" onclick="helpModal(false)" alt="">
+            <p>
+                You can send a payment from any crypto wallet, in any of the listed cryptocurrencies. When you click on a transaction in your wallet, it will open it's details, including the transaction link (Transaction ID). You will have the option to copy it, then just paste it into the provided field below.
+            </p>
+            <img src="assets/help1.jpeg" alt="">
+
+            <hr>
+
+            <p>
+                Make sure you've set up your telegram username . Enter the username of your Telegram profile from which you want to be added to our groups. Within a maximum of a few hours, you will be added and ready to go.
+            </p>
+
+            <img src="assets/help2.jpg" alt="">
+        </div>
+
+        
+            
+        </div>
         <div class="form-container hidden">
             <div class="wallet-address-div">
                 Wallet address
-                <p class="copy-tooltip"><span class="wallet-address-text"></span> <img class="copy-icon" src="assets/copy-icon.svg" alt=""><span class="copy-tooltiptext">Copy</span></p>
-                
+                <p class="copy-tooltip"><span class="wallet-address-text"></span> <img class="copy-icon"
+                        src="assets/copy-icon.svg" alt=""><span class="copy-tooltiptext">Copy</span></p>
+
             </div>
 
             <div class="qr-code-container">
@@ -65,11 +85,12 @@
                 </div>
                 <div class="main">
                     <input type="text" name="transactionLink" id="transactionLink" placeholder="Transaction link">
-                    <input type="text"  name="telegramUsername"  id="telegramUsername" placeholder="Telegram username">
-    
-                    <button type="submit" class="submit-btn">SUBMIT</div>
+                    <input type="text" name="telegramUsername" id="telegramUsername" placeholder="Telegram username">
+
+                    <button type="submit" class="submit-btn">SUBMIT
                 </div>
-            </form>
+        </div>
+        </form>
         </div>
     </main>
 
@@ -82,34 +103,38 @@
         <small class="copyright">&copy; Copyright <span class="copy-year"></span>, <a href="https://9320.tech">Tech9320
                 team</a>. All rights reserved.</small>
     </footer>
-
+    <div class="overlay hidden"></div>
     <script>
-        let walletAddressETH = '0x3232abc0dd7fe7835a3ddd389c165cc4ba435'; 
-        let walletAddressBTC = '0x95222290dd7278aa3ddd389c165cc4bafe5'; 
-        let walletAddressUSDT = '0x95111111223233dddabcc1004b22f'; 
+        let walletAddressETH = '0x3232abc0dd7fe7835a3ddd389c165cc4ba435';
+        let walletAddressBTC = '0x95222290dd7278aa3ddd389c165cc4bafe5';
+        let walletAddressUSDT = '0x95111111223233dddabcc1004b22f';
 
         let QR_Code;
 
+        document.querySelector('.overlay').addEventListener('click', () =>{
+            helpModal(false)
+        })
+        
         function openTransactionForm(coin) {
             const formContainer = document.querySelector('.form-container');
             formContainer.classList.remove('hidden');
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 formContainer.scrollIntoView(true);
             }, 1);
 
             let walletAddress;
-            if(coin == 'ETH'){
+            if (coin == 'ETH') {
                 walletAddress = walletAddressETH
-            }else if(coin == 'BTC'){
+            } else if (coin == 'BTC') {
                 walletAddress = walletAddressBTC
-            }else if(coin == 'USDT'){
+            } else if (coin == 'USDT') {
                 walletAddress = walletAddressUSDT
             }
 
-            if(QR_Code){
+            if (QR_Code) {
                 QR_Code.makeCode(walletAddress);
-            }else{
+            } else {
                 generateQR(walletAddress)
             }
 
@@ -127,16 +152,16 @@
                 colorLight: "#ffffff",
                 correctLevel: QRCode.CorrectLevel.H
             });
-        } 
+        }
 
         const walletAddressBtn = document.querySelector('.wallet-address-div p')
         walletAddressBtn.addEventListener('click', () => {
             navigator.clipboard.writeText(walletAddress);
             const toolTipText = document.querySelector('.copy-tooltiptext');
             toolTipText.innerHTML = 'Copied!'
-            setTimeout(()=>{
+            setTimeout(() => {
                 toolTipText.innerHTML = 'Copy'
-            },2000)
+            }, 2000)
         })
 
         const coinTextETH = document.querySelector('.coin-text.eth')
@@ -144,36 +169,52 @@
         const coinTextUSDT = document.querySelector('.coin-text.usdt')
 
         fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd')
-        .then(response => response.json())
-        .then(response => {
-            coinTextETH.innerHTML = `10$ = ${(10/response.bitcoin.usd).toFixed(8)} ETH`;
-            coinTextBTC.innerHTML = `10$ = ${(10/response.ethereum.usd).toFixed(8)} BTC`;
-            coinTextUSDT.innerHTML = `10$ = ${(10/response.tether.usd).toFixed(8)} USDT`;
-        })
-        .catch(error => {
-            coinTextETH.innerHTML = 'ETH';
-            coinTextBTC.innerHTML = 'BTC'
-            coinTextUSDT.innerHTML = 'USDT'
-        })
+            .then(response => response.json())
+            .then(response => {
+                coinTextETH.innerHTML = `10$ = ${(10 / response.bitcoin.usd).toFixed(8)} ETH`;
+                coinTextBTC.innerHTML = `10$ = ${(10 / response.ethereum.usd).toFixed(8)} BTC`;
+                coinTextUSDT.innerHTML = `10$ = ${(10 / response.tether.usd).toFixed(8)} USDT`;
+            })
+            .catch(error => {
+                coinTextETH.innerHTML = 'ETH';
+                coinTextBTC.innerHTML = 'BTC'
+                coinTextUSDT.innerHTML = 'USDT'
+            })
 
-        function submitTransaction(event){
+        function helpModal(open) {
+            const dialog = document.querySelector('#help-dialog');
+            const overlay = document.querySelector('.overlay')
+
+            
+            if(open){
+                dialog.classList.remove('hidden');
+                overlay.classList.remove('hidden');
+            }else{
+                dialog.classList.add('hidden');
+                overlay.classList.add('hidden');
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        function submitTransaction(event) {
             event.preventDefault();
 
             const transactionLinkInput = document.querySelector('input#transactionLink')
-            if(!transactionLinkInput){
+            if (!transactionLinkInput) {
                 alert('Error');
                 console.log('Transaction link missing');
                 return;
             }
 
             const telegramUsernameInput = document.querySelector('input#telegramUsername')
-            if(!telegramUsernameInput){
+            if (!telegramUsernameInput) {
                 alert('Error');
                 console.log('Telegram username missing');
                 return;
             }
 
-            if(!transactionLinkInput.value || !telegramUsernameInput.value){
+            if (!transactionLinkInput.value || !telegramUsernameInput.value) {
                 alert("Please fill in all fields");
                 return;
             }
@@ -187,8 +228,8 @@
                 method: 'POST',
                 body: formData
             }).then(response => response.json())
-            .then(console.log)
-            .catch(console.log)
+                .then(console.log)
+                .catch(console.log)
         }
     </script>
 </body>
