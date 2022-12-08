@@ -84,8 +84,8 @@
                     Just fill this and you're good to go!
                 </div>
                 <div class="main">
-                    <input type="text" name="transactionLink" id="transactionLink" placeholder="Transaction link">
-                    <input type="text" name="telegramUsername" id="telegramUsername" placeholder="Telegram username">
+                    <input type="text" name="transactionLink" id="transactionLink" placeholder="Transaction Link">
+                    <input type="text" name="telegramUsername" id="telegramUsername" placeholder="Telegram Username">
 
                     <button type="submit" class="submit-btn">SUBMIT
                 </div>
@@ -171,8 +171,8 @@
         fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd')
             .then(response => response.json())
             .then(response => {
-                coinTextETH.innerHTML = `10$ = ${(10 / response.bitcoin.usd).toFixed(8)} ETH`;
-                coinTextBTC.innerHTML = `10$ = ${(10 / response.ethereum.usd).toFixed(8)} BTC`;
+                coinTextETH.innerHTML = `10$ = ${(10 / response.ethereum.usd).toFixed(8)} ETH`;
+                coinTextBTC.innerHTML = `10$ = ${(10 / response.bitcoin.usd).toFixed(8)} BTC`;
                 coinTextUSDT.innerHTML = `10$ = ${(10 / response.tether.usd).toFixed(8)} USDT`;
             })
             .catch(error => {
