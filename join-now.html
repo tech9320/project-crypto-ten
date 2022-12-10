@@ -40,6 +40,18 @@
                 <img src="assets/crypto-coins/usdt.svg" alt="usdt">
                 <p class="coin-text usdt"></p>
             </div>
+            <div class="coin-cointainer" onclick="openTransactionForm('LTC')">
+                <img src="assets/crypto-coins/ltc.png" alt="ltc">
+                <p class="coin-text ltc"></p>
+            </div>
+            <div class="coin-cointainer" onclick="openTransactionForm('$MATIC')">
+                <img src="assets/crypto-coins/polygon.png" alt="$matic">
+                <p class="coin-text matic"></p>
+            </div>
+            <div class="coin-cointainer" onclick="openTransactionForm('BNB')">
+                <img src="assets/crypto-coins/bnb.png" alt="bnb">
+                <p class="coin-text bnb"></p>
+            </div>
         </div>
         <div class="need-help-join-btn-container">
             <button class="need-help-join-btn" onclick="helpModal(true)">
@@ -108,6 +120,10 @@
         let walletAddressETH = '0x3232abc0dd7fe7835a3ddd389c165cc4ba435';
         let walletAddressBTC = '0x95222290dd7278aa3ddd389c165cc4bafe5';
         let walletAddressUSDT = '0x95111111223233dddabcc1004b22f';
+        let walletAddressLTC = '0x95111111223233dddabcc1004b22f';
+        let walletAddressBNB = '0x95111111223233dddabcc1004b22f';
+        let walletAddress$MATIC = '0x95111111223233dddabcc1004b22f';
+
 
         let QR_Code;
 
@@ -130,6 +146,12 @@
                 walletAddress = walletAddressBTC
             } else if (coin == 'USDT') {
                 walletAddress = walletAddressUSDT
+            } else if (coin == 'LTC') {
+                walletAddress = walletAddressLTC
+            } else if (coin == 'BNB') {
+                walletAddress = walletAddressBNB
+            } else if (coin == '$MATIC') {
+                walletAddress = walletAddress$MATIC
             }
 
             if (QR_Code) {
@@ -167,18 +189,30 @@
         const coinTextETH = document.querySelector('.coin-text.eth')
         const coinTextBTC = document.querySelector('.coin-text.btc')
         const coinTextUSDT = document.querySelector('.coin-text.usdt')
+        const coinTextLTC = document.querySelector('.coin-text.ltc')
+        const coinText$MATIC = document.querySelector('.coin-text.matic')
+        const coinTextBNB = document.querySelector('.coin-text.bnb')
 
-        fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether&vs_currencies=usd')
+
+        fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether,litecoin,binancecoin,matic-network&vs_currencies=usd')
             .then(response => response.json())
             .then(response => {
-                coinTextETH.innerHTML = `10$ = ${(10 / response.ethereum.usd).toFixed(8)} ETH`;
-                coinTextBTC.innerHTML = `10$ = ${(10 / response.bitcoin.usd).toFixed(8)} BTC`;
-                coinTextUSDT.innerHTML = `10$ = ${(10 / response.tether.usd).toFixed(8)} USDT`;
+                coinTextETH.innerHTML = `${(10 / response.ethereum.usd).toFixed(7)} ETH`;
+                coinTextBTC.innerHTML = `${(10 / response.bitcoin.usd).toFixed(7)} BTC`;
+                coinTextUSDT.innerHTML = `${(10 / response.tether.usd).toFixed(2)} USDT`;
+                coinTextLTC.innerHTML = `${(10 / response.litecoin.usd).toFixed(5)} LTC`;
+                coinText$MATIC.innerHTML = `${(10 / response['matic-network'].usd).toFixed(5)} $MATIC`;
+                coinTextBNB.innerHTML = `${(10 / response.binancecoin.usd).toFixed(5)} BNB`;
+
             })
             .catch(error => {
                 coinTextETH.innerHTML = 'ETH';
                 coinTextBTC.innerHTML = 'BTC'
                 coinTextUSDT.innerHTML = 'USDT'
+                coinTextLTC.innerHTML = 'LTC';
+                coinText$MATIC.innerHTML = `$MATIC`;
+                coinTextBNB.innerHTML = `BNB`;
+
             })
 
         function helpModal(open) {
