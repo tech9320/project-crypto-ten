@@ -68,6 +68,24 @@ header img {
     justify-content: center;
 }
 
+.middle {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.middle > button {
+    width: 30%;
+}
+
+@media only screen and (max-width: 600px){
+    .middle > button {
+        width: 90%;
+    }
+}
+
+
 .join-now-btn {
     color: white;
     font-size: 3rem;
@@ -140,7 +158,7 @@ header img {
 
 .offer{
     padding-left: 4rem;
-    width: 70vw;
+    width: 80vw;
 }
 
 .offer-div{
@@ -273,6 +291,11 @@ header img {
         margin: 1rem;
         margin-top: 3rem;
         margin-bottom: 1.3rem;
+    }
+
+    .middle-join-now {
+        font-size: 1.5rem;
+        margin: 0rem;
     }
 }
 

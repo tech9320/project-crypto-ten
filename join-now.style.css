@@ -111,15 +111,11 @@
     margin-bottom: 1.5rem;
 }
 
-.qr-code{
+#qr-code{
     margin: auto;
     display: flex;
     justify-content: center;
-}
-
-.qr-code img{
-    margin: auto;
-    width: 30vh;
+    max-width: 100%;
 }
 
 html {
@@ -458,4 +454,15 @@ main{
 
 .overlay.hidden{
     display: none;
+}
+
+.note {
+    color: white;
+    margin-bottom: 1rem;
+}
+
+@media only screen and (max-width: 600px){
+    .note {
+        text-align: center;
+    }
 }

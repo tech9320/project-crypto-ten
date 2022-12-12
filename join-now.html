@@ -87,8 +87,14 @@
             </div>
 
             <div class="qr-code-container">
-                <div class="qr-code">
-                </div>
+                <img id="qr-code">
+                </img>
+            </div>
+
+            <div class="note">
+                Please enter the amount shown on the display below the currency logo and calculate the fees yourself. 
+                We will accept the transaction if the price of the currency has changed in the period between payment and joining the group, 
+                but if you have sent less than $10 in value at that moment we will not be able to accept your transaction and will contact you on Telegram.
             </div>
 
             <form action="https://fabform.io/f/uOedpx2" method="post">
@@ -117,15 +123,12 @@
     </footer>
     <div class="overlay hidden"></div>
     <script>
-        let walletAddressETH = '0x3232abc0dd7fe7835a3ddd389c165cc4ba435';
-        let walletAddressBTC = '0x95222290dd7278aa3ddd389c165cc4bafe5';
-        let walletAddressUSDT = '0x95111111223233dddabcc1004b22f';
-        let walletAddressLTC = '0x95111111223233dddabcc1004b22f';
-        let walletAddressBNB = '0x95111111223233dddabcc1004b22f';
-        let walletAddress$MATIC = '0x95111111223233dddabcc1004b22f';
-
-
-        let QR_Code;
+        let walletAddressETH = '0x5F6A608fd72c3ba76e46B9f3F66DB0bB0B056549';
+        let walletAddressBTC = 'bc1qztkxdu8lmd72j3hlzkdg3h7aceqq2u8rglq2z3';
+        let walletAddressUSDT = '0x5F6A608fd72c3ba76e46B9f3F66DB0bB0B056549';
+        let walletAddressLTC = 'ltc1qmphaz84mjdgneuhax0ng5z5nsyrrfqqq9tvay5';
+        let walletAddressBNB = '0x5F6A608fd72c3ba76e46B9f3F66DB0bB0B056549';
+        let walletAddress$MATIC = '0x5F6A608fd72c3ba76e46B9f3F66DB0bB0B056549';
 
         document.querySelector('.overlay').addEventListener('click', () =>{
             helpModal(false)
@@ -140,27 +143,30 @@
             }, 1);
 
             let walletAddress;
+            let qrCodeSource;
+
             if (coin == 'ETH') {
-                walletAddress = walletAddressETH
+                walletAddress = walletAddressETH;
+                qrCodeSource = 'assets/qr/eth-qr.jpg';
             } else if (coin == 'BTC') {
-                walletAddress = walletAddressBTC
+                walletAddress = walletAddressBTC;
+                qrCodeSource = 'assets/qr/btc-qr.jpg';
             } else if (coin == 'USDT') {
-                walletAddress = walletAddressUSDT
+                walletAddress = walletAddressUSDT;
+                qrCodeSource = 'assets/qr/usdt-qr.jpg';
             } else if (coin == 'LTC') {
-                walletAddress = walletAddressLTC
+                walletAddress = walletAddressLTC;
+                qrCodeSource = 'assets/qr/ltc-qr.jpg';
             } else if (coin == 'BNB') {
-                walletAddress = walletAddressBNB
+                walletAddress = walletAddressBNB;
+                qrCodeSource = 'assets/qr/bnb-qr.jpg';
             } else if (coin == '$MATIC') {
-                walletAddress = walletAddress$MATIC
+                walletAddress = walletAddress$MATIC;
+                qrCodeSource = 'assets/qr/matic-qr.jpg';
             }
 
-            if (QR_Code) {
-                QR_Code.makeCode(walletAddress);
-            } else {
-                generateQR(walletAddress)
-            }
-
-            document.querySelector('.wallet-address-text').innerHTML = walletAddress
+            document.querySelector('.wallet-address-text').innerHTML = walletAddress;
+            document.getElementById("qr-code").src = qrCodeSource;
         }
 
         document.querySelector('.copy-year').innerText = new Date().getFullYear();
@@ -177,8 +183,8 @@
         }
 
         const walletAddressBtn = document.querySelector('.wallet-address-div p')
-        walletAddressBtn.addEventListener('click', () => {
-            navigator.clipboard.writeText(walletAddress);
+        walletAddressBtn.addEventListener('click', (elem) => {
+            navigator.clipboard.writeText(document.querySelector('.wallet-address-text').innerHTML);
             const toolTipText = document.querySelector('.copy-tooltiptext');
             toolTipText.innerHTML = 'Copied!'
             setTimeout(() => {
