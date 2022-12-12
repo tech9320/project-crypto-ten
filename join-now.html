@@ -205,7 +205,7 @@
             .then(response => {
                 coinTextETH.innerHTML = `${(10 / response.ethereum.usd).toFixed(7)} ETH`;
                 coinTextBTC.innerHTML = `${(10 / response.bitcoin.usd).toFixed(7)} BTC`;
-                coinTextUSDT.innerHTML = `${(10 / response.tether.usd).toFixed(2)} USDT`;
+                coinTextUSDT.innerHTML = `${(10 / response.tether.usd).toFixed(2)} USDT (erc20)`;
                 coinTextLTC.innerHTML = `${(10 / response.litecoin.usd).toFixed(5)} LTC`;
                 coinText$MATIC.innerHTML = `${(10 / response['matic-network'].usd).toFixed(5)} $MATIC`;
                 coinTextBNB.innerHTML = `${(10 / response.binancecoin.usd).toFixed(5)} BNB`;
