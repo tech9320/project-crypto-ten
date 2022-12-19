@@ -2,6 +2,13 @@
 <html lang="en">
 
 <head>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-B6YGVKHJ14');
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +16,8 @@
     <link rel="stylesheet" href="common.style.css">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B6YGVKHJ14"></script>
+    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;900&display=swap');
     </style>
@@ -22,7 +31,7 @@
 
     <header>
         <a href="./index.html"> <img src="assets/logo-with-name.svg" alt=""></a>
-       
+
     </header>
 
     <main>
@@ -62,21 +71,24 @@
         <div id="help-dialog" class="hidden">
             <img class="close-btn" src="assets/close.svg" onclick="helpModal(false)" alt="">
             <p>
-                You can send a payment from any crypto wallet, in any of the listed cryptocurrencies. When you click on a transaction in your wallet, it will open it's details, including the transaction link (Transaction ID). You will have the option to copy it, then just paste it into the provided field below.
+                You can send a payment from any crypto wallet, in any of the listed cryptocurrencies. When you click on
+                a transaction in your wallet, it will open it's details, including the transaction link (Transaction
+                ID). You will have the option to copy it, then just paste it into the provided field below.
             </p>
             <img src="assets/help1.jpeg" alt="">
 
             <hr>
 
             <p>
-                Make sure you've set up your telegram username . Enter the username of your Telegram profile from which you want to be added to our groups. Within a maximum of a few hours, you will be added and ready to go.
+                Make sure you've set up your telegram username . Enter the username of your Telegram profile from which
+                you want to be added to our groups. Within a maximum of a few hours, you will be added and ready to go.
             </p>
 
             <img src="assets/help2.jpg" alt="">
         </div>
 
-        
-            
+
+
         </div>
         <div class="form-container hidden">
             <div class="wallet-address-div">
@@ -92,9 +104,11 @@
             </div>
 
             <div class="note">
-                Please enter the amount shown on the display below the currency logo and calculate the fees yourself. 
-                We will accept the transaction if the price of the currency has changed in the period between payment and joining the group, 
-                but if you have sent less than $10 in value at that moment we will not be able to accept your transaction and will contact you on Telegram.
+                Please enter the amount shown on the display below the currency logo and calculate the fees yourself.
+                We will accept the transaction if the price of the currency has changed in the period between payment
+                and joining the group,
+                but if you have sent less than $10 in value at that moment we will not be able to accept your
+                transaction and will contact you on Telegram.
             </div>
 
             <form action="https://nocodeform.io/f/6396f18321ef72b7323b8db6" method="post">
@@ -130,10 +144,10 @@
         let walletAddressBNB = '0x5F6A608fd72c3ba76e46B9f3F66DB0bB0B056549';
         let walletAddress$MATIC = '0x5F6A608fd72c3ba76e46B9f3F66DB0bB0B056549';
 
-        document.querySelector('.overlay').addEventListener('click', () =>{
+        document.querySelector('.overlay').addEventListener('click', () => {
             helpModal(false)
         })
-        
+
         function openTransactionForm(coin) {
             const formContainer = document.querySelector('.form-container');
             formContainer.classList.remove('hidden');
@@ -225,11 +239,11 @@
             const dialog = document.querySelector('#help-dialog');
             const overlay = document.querySelector('.overlay')
 
-            
-            if(open){
+
+            if (open) {
                 dialog.classList.remove('hidden');
                 overlay.classList.remove('hidden');
-            }else{
+            } else {
                 dialog.classList.add('hidden');
                 overlay.classList.add('hidden');
             }
